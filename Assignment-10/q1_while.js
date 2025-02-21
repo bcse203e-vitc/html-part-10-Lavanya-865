@@ -12,4 +12,4 @@ while (guess !== randomNumber) {
     }
 }
 
-alert("🎉 Correct! You guessed the number!");
+alert("Correct! You guessed the number!");
