@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layered Image Gallery</title>
+    <style>
+        .gallery {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: auto;
+            border: 2px solid black;
+            overflow: hidden;
+        }
+        
+        .gallery img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="text-align: center;">Layered Image Gallery</h2>
+    <div class="gallery">
+        <img src="https://cdn.pixabay.com/photo/2025/02/11/16/41/swans-9399436_640.jpg" onclick="moveToBack(this)" style="z-index: 3;">
+        <img src="https://cdn.pixabay.com/photo/2025/02/03/21/01/forest-9380292_640.jpg" onclick="moveToBack(this)" style="z-index: 2;">
+        <img src="https://cdn.pixabay.com/photo/2025/01/08/14/52/beach-9319305_640.jpg" onclick="moveToBack(this)" style="z-index: 1;">
+    </div>
+
+    <script>
+        function moveToBack(clickedImg) {
+            let images = document.querySelectorAll(".gallery img");
+
+            let maxZIndex = Math.max(...Array.from(images).map(img => parseInt(img.style.zIndex)));
+
+            if (parseInt(clickedImg.style.zIndex) === maxZIndex) {
+                clickedImg.style.zIndex = "0";
+                images.forEach(img => {
+                    if (img !== clickedImg) {
+                        img.style.zIndex = parseInt(img.style.zIndex) + 1;
+                    }
+                });
+            }
+        }
+    </script>
+
+</body>
+
+</html>
