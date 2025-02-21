@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Word & Character Counter</title>
+</head>
+
+<body>
+
+    <h2>Live Word & Character Counter</h2>
+    <textarea id="textInput" rows="6" cols="50" placeholder="Start typing..."></textarea>
+    <p>Characters: <span id="charCount">0</span> / 200</p>
+    <p>Words: <span id="wordCount">0</span></p>
+
+    <script>
+        const textInput = document.getElementById("textInput");
+        const charCount = document.getElementById("charCount");
+        const wordCount = document.getElementById("wordCount");
+        const maxChars = 200;
+
+        textInput.addEventListener("input", function() {
+            let text = textInput.value;
+            let chars = text.length;
+            let words = text.trim().split(/\s+/).filter(word => word !== "").length;
+
+            charCount.textContent = chars;
+            wordCount.textContent = words;
+
+            if (chars > maxChars) {
+                alert("⚠️ Character limit exceeded! (Max: 200)");
+                textInput.value = text.substring(0, maxChars);
+                charCount.textContent = maxChars;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
