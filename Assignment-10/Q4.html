@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table Generator</title>
+    <style>
+        fieldset {
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+        }
+        
+        table {
+            margin: 20px auto;
+            width: 200px;
+        }
+        
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Multiplication Table Generator</h2>
+
+    <fieldset>
+        <legend>Enter a Number</legend>
+        <input type="number" id="numberInput" placeholder="Enter a number">
+        <button onclick="generateTable()">Generate</button>
+    </fieldset>
+
+    <div id="tableContainer"></div>
+
+    <script>
+        function generateTable() {
+            let num = document.getElementById("numberInput").value;
+            if (!num || isNaN(num)) {
+                alert("Please enter a valid number.");
+                return;
+            }
+
+            let tableHTML = "<table><tr><th>Multiplication</th><th>Result</th></tr>";
+            for (let i = 1; i <= 10; i++) {
+                tableHTML += `<tr><td>${num} × ${i}</td><td>${num * i}</td></tr>`;
+            }
+            tableHTML += "</table>";
+
+            document.getElementById("tableContainer").innerHTML = tableHTML;
+        }
+    </script>
+
+</body>
+
+</html>
