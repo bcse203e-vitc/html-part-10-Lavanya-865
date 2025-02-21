@@ -1,4 +1,4 @@
-const randomNumber = Math.floor(Math.random() * 5) + 1; // Generate random number between 1-50
+const randomNumber = Math.floor(Math.random() * 50) + 1; 
 let guess = parseInt(prompt("Guess a number between 1 and 50:"));
 
 while (guess !== randomNumber) {
